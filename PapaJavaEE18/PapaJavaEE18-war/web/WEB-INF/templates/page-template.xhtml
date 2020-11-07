@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition template="/WEB-INF/templates/base-template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="navigation">
+        <f:view locale="#{loginBean.locale}">              
+            <b:navBar brandHref="#" fluid="true">
+                <b:navbarLinks>
+                    <b:navLink value="${msg.homeTitle}" outcome="homepage" iconAwesome="home"></b:navLink>
+                    <b:dropMenu value="${msg.contractTitle}" iconAwesome="book" rendered="${loginBean.loggedIn}">
+                        <b:navLink value="${msg.contractListTitle}" outcome="contractlist"></b:navLink>
+                        <b:navLink value="${msg.createContractTitle}" outcome="createcontract" rendered="${loginBean.userSecretary or loginBean.userAssistant}"></b:navLink>
+                        <b:navLink></b:navLink>
+                    </b:dropMenu>
+                    <b:dropMenu value="${msg.timesheetTitle}" iconAwesome="fa-pencil-square" rendered="${loginBean.loggedIn}">
+                        <b:navLink value="${msg.timesheetListTitle}" outcome="timesheetList"></b:navLink>
+                        <b:navLink value="#{msg.timesheetEntryCreateTitle}" outcome="createTimesheetEntry"></b:navLink>
+                        <b:navLink></b:navLink>
+                    </b:dropMenu>
+                    <b:navLink value="#{msg.testDateCreationTitle}" outcome="testdata" rendered="${loginBean.userStaff}"></b:navLink>
+                    <b:navLink value="#{msg.generalAboutUs}" outcome="aboutus" iconAwesome="group"></b:navLink>
+                    <b:navLink value="#{msg.generalContactUs}" outcome="contactus" iconAwesome="fa-phone-square"></b:navLink>
+                </b:navbarLinks>
+                <b:form>
+                    <b:navbarLinks pull="right" styleClass="hidden-xs" rendered="${loginBean.loggedIn}">
+                        <b:dropMenu value="${msg.welcomeMessage} ${loginBean.username}">
+                            <b:navCommandLink action="#{loginBean.logout}" value="${msg.logoutButtonLabel}"></b:navCommandLink>
+                            <b:navCommandLink action="#{loginBean.setLocaleEN}" value="${msg.generalEN}"></b:navCommandLink>
+                            <b:navCommandLink action="#{loginBean.setLocaleDE}" value="${msg.generalDE}"></b:navCommandLink>
+                        </b:dropMenu>
+                    </b:navbarLinks>  
+                    <b:navbarLinks pull="right" styleClass="hidden-xs" rendered="${!loginBean.loggedIn}">
+                        <b:dropMenu value="${msg.generalLanguage}">
+                            <b:navCommandLink action="#{loginBean.setLocaleEN}" value="${msg.generalEN}"></b:navCommandLink>
+                            <b:navCommandLink action="#{loginBean.setLocaleDE}" value="${msg.generalDE}"></b:navCommandLink>
+                        </b:dropMenu>
+                    </b:navbarLinks>  
+                </b:form> 
+            </b:navBar>    
+        </f:view>          
+    </ui:define>
+</ui:composition>

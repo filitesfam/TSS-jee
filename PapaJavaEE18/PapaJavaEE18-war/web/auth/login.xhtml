@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition template="/WEB-INF/templates/page-template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui">
+    <ui:param name="title" value=""/>
+    <ui:define name="content">
+        <b:jumbotron>
+            <b:container >
+                <form class="form form-horizontal" role="form" method="post" action="j_security_check" name="loginForm">
+                    <legend>${msg.loginLegend}</legend>
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="username">${msg.loginUsernameLabel} :</label>
+                        <div class="col-md-4">
+                            <input class="form-control" autofocus="true" type="text" id="username" name="j_username" autocomplete="off"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2" for="password">${msg.loginPasswordLabel} :</label>
+                        <div class="col-md-4">
+                            <div class="input-group">
+                                <input class="form-control" type="password" id="password" name="j_password" autocomplete="off"/>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-success" type="submit">
+                                        ${msg.loginButtonLabel} <span class="glyphicon glyphicon-log-in"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <ui:fragment rendered="${request.parameterMap.containsKey('j_username')}">
+                    <b:alert severity="danger">
+                        ${msg.loginFailMessage}
+                    </b:alert>
+                </ui:fragment>                
+            </b:container>
+        </b:jumbotron>
+    </ui:define>
+</ui:composition>

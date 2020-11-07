@@ -1,0 +1,9 @@
+staff1@acme.edu;{SSHA256}r6q76vsK7UtoggD540ByjMpsZRnnYqumFXkWIRzDJnO5i2jkdR+IdQ==;VALIDUSER,STAFF;
+secretary1@acme.edu;{SSHA256}r6q76vsK7UtoggD540ByjMpsZRnnYqumFXkWIRzDJnO5i2jkdR+IdQ==;VALIDUSER,SECRETARY;
+secretary2@acme.edu;{SSHA256}r6q76vsK7UtoggD540ByjMpsZRnnYqumFXkWIRzDJnO5i2jkdR+IdQ==;VALIDUSER,SECRETARY;
+employee1@acme.edu;{SSHA256}r6q76vsK7UtoggD540ByjMpsZRnnYqumFXkWIRzDJnO5i2jkdR+IdQ==;VALIDUSER,EMPLOYEE;
+employee2@acme.edu;{SSHA256}r6q76vsK7UtoggD540ByjMpsZRnnYqumFXkWIRzDJnO5i2jkdR+IdQ==;VALIDUSER,EMPLOYEE;
+supervisor1@acme.edu;{SSHA256}r6q76vsK7UtoggD540ByjMpsZRnnYqumFXkWIRzDJnO5i2jkdR+IdQ==;VALIDUSER,SUPERVISOR;
+supervisor2@acme.edu;{SSHA256}r6q76vsK7UtoggD540ByjMpsZRnnYqumFXkWIRzDJnO5i2jkdR+IdQ==;VALIDUSER,SUPERVISOR;
+assistant1@acme.edu;{SSHA256}r6q76vsK7UtoggD540ByjMpsZRnnYqumFXkWIRzDJnO5i2jkdR+IdQ==;VALIDUSER,ASSISTANT;
+assistant2@acme.edu;{SSHA256}r6q76vsK7UtoggD540ByjMpsZRnnYqumFXkWIRzDJnO5i2jkdR+IdQ==;VALIDUSER,ASSISTANT;

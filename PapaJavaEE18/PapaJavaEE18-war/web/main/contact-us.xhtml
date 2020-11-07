@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition template="/WEB-INF/templates/page-template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui">
+    <ui:param name="title" value=""/>
+    <ui:define name="content">
+        <b:jumbotron>
+            <b:container>
+                <b:row>
+                    <b:column col-md="5">
+                        <div>                        
+                            <h:graphicImage value = "/main/logo.png" />
+                        </div>
+                    </b:column>
+                    <b:column col-md="7">
+                        <p>${msg.contactUsPageExplanation} <a href="mailto:papa@uni-koblenz.de?Subject=Student%20Application">${msg.homePageThisMail}</a></p>
+                    </b:column>
+                </b:row>
+            </b:container>
+        </b:jumbotron>
+    </ui:define>
+</ui:composition>

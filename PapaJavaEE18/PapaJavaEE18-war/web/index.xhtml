@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition template="/WEB-INF/templates/page-template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui">
+    <ui:param name="title" value=""/>
+    <ui:define name="content">
+        <b:jumbotron>
+            <b:container>
+                <b:row>
+                    <b:column col-md="5">
+                        <div>                        
+                            <h:graphicImage value="/main/logo.png" />
+                        </div>
+                    </b:column>
+                        <b:column col-md="7">
+                            <p>This system is helpful to keep track of the hours due and the hours completed of the employee and also provide basic statistics for supervisors as well as for employees.
+                                If you are already registered as employee, secretary or supervisor you can login by clicking the button below.
+                            </p>
+                        </b:column>
+                        <b:column col-md="7" rendered="${!loginBean.loggedIn}">
+                            <p>
+                                <h:link  outcome="login" class="btn btn-lg btn-info">Click here to login»</h:link>
+                            </p>
+                        </b:column>
+                </b:row>
+            </b:container>
+        </b:jumbotron>
+        <b:container>
+            <b:row>
+                <b:column col-md="4">
+                    <h3>How to apply </h3>
+                    <p>If you want to apply as student assistant you can send your cv to <a href="mailto:papa@uni-koblenz.de?Subject=Student%20Application">this mail</a></p>
+                </b:column>
+                <b:column col-md="4">
+                    <h3>Working Hours</h3>
+                    <p>The time for working as student assistant is 20 hours per week</p>
+                </b:column>
+                <b:column col-md="4">
+                    <h3>Salary</h3>
+                    <p>You will be paid 15 euro per hour </p>
+                </b:column>
+            </b:row>
+            <hr/>
+            <footer>
+                <p>© Papa</p>
+            </footer>
+        </b:container>
+    </ui:define>
+</ui:composition>

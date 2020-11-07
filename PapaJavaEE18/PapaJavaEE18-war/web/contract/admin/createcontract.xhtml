@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition 
+    template="/WEB-INF/templates/page-template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:b="http://bootsfaces.net/ui"
+    xmlns:p="http://primefaces.org/ui">
+
+    <ui:param name="title" value="${msg.createContractTitle}">
+    </ui:param>
+    <ui:define name="content">
+        <h:form id="createContractForm">
+            <b:container fluid="true">
+                <b:panel title="#{msg.createContractTitle}" look="primary">
+                    <h:messages for="createContractForm" showSummary="true" showDetail="true"/>                    
+                    <b:row>
+                        <b:column medium-screen="6">
+                            <b:inputText id="nameInput"
+                                         required="true"
+                                         autocomplete="off"
+                                         value="#{createContractBean.contract.name}"
+                                         label="${msg.contractNameLabel}"
+                                         disabled="#{!createContractBean.editFieldsActive}">
+                            </b:inputText>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column medium-screen="6"> 
+                            <p:outputLabel value="#{msg.contractStartDateInfo}">
+
+                            </p:outputLabel> 
+                        </b:column>
+                        <b:column medium-screen="6"> 
+                            <p:outputLabel value="#{msg.contractEndDateInfo}">
+
+                            </p:outputLabel> 
+                        </b:column>
+                    </b:row>
+                    <b:row style="padding-bottom: 15px; padding-top: 15px;">
+                        <b:column medium-screen="6">
+                            <b:dateTimePicker id="startDateEdit" label="#{msg.generalStartDate}"
+                                              value="#{createContractBean.contract.startDate}"
+                                              mode="popup-icon"
+                                              show-icon="true"
+                                              show-time="false"
+                                              show-date="true"
+                                              use-current="true"
+                                              disabled="#{!createContractBean.editFieldsActive}"/>
+                        </b:column>
+                        <b:column medium-screen="6">
+                            <b:dateTimePicker id="endDateEdit" label="#{msg.generalEndDate}"
+                                              value="#{createContractBean.contract.endDate}"
+                                              mode="popup-icon"
+                                              show-icon="true"
+                                              show-time="false"
+                                              show-date="true"
+                                              use-current="true"
+                                              disabled="#{!createContractBean.editFieldsActive}"/>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column medium-screen="6">
+                            <b:inputText id="hoursperweek" 
+                                         value="#{createContractBean.contract.hoursPerWeek}"
+                                         label="#{msg.contractHoursPerWeek}"
+                                         autocomplete="off"
+                                         required="true"
+                                         disabled="#{!createContractBean.editFieldsActive}">
+                            </b:inputText>
+                        </b:column>
+                        <b:column medium-screen="6">
+                            <b:inputText id="workingDaysPerWeek" 
+                                         value="#{createContractBean.contract.workingDaysPerWeek}"
+                                         label="#{msg.contractWorkingDaysPerWeek}"
+                                         disabled="#{!createContractBean.editFieldsActive}">
+                            </b:inputText>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column medium-screen="6">
+                            <b:selectOneMenu id="frequency" 
+                                             value="#{createContractBean.contract.frequency}"
+                                             label="#{msg.timesheetFrequency}"
+                                             disabled="#{!createContractBean.editFieldsActive}"
+                                             required="true" >
+                                <f:selectItem itemLabel="#{msg.generalPleaseSelect}" itemValue=""/>
+                                <f:selectItem itemLabel="Weekly" itemValue="WEEKLY" />
+                                <f:selectItem itemLabel="Monthly" itemValue="MONTHLY" />
+                            </b:selectOneMenu>
+                        </b:column>
+                        <b:column medium-screen="6">
+                            <b:inputText id="vacationDaysPerYear" 
+                                         value="#{createContractBean.contract.vacationDaysPerYear}"
+                                         label="#{msg.contractVacationDaysPerYear}"
+                                         disabled="#{!createContractBean.editFieldsActive}">
+                            </b:inputText>
+                        </b:column>
+                    </b:row>
+                    <b:row style="padding-bottom: 20px; padding-top: 20px;">
+                        <b:column medium-screen="6">
+                           <b:selectOneMenu value="#{createContractBean.employeePerson}" 
+                                             label="#{msg.contractEmployeeName}"
+                                             style="width: 100%;"
+                                             readonly="#{!createContractBean.editFieldsActive}">
+                                <f:selectItems
+                                    value="#{createContractBean.employeePersons}" 
+                                    var="employeePersonItem" itemValue="#{employeePersonItem}" 
+                                    itemLabel="#{employeePersonItem.firstName} #{employeePersonItem.lastName}"/> 
+                            </b:selectOneMenu>
+                            
+                        </b:column>
+                        <b:column medium-screen="6">
+                            <b:selectOneMenu value="#{createContractBean.supervisorPerson}" 
+                                             label="#{msg.contractSupervisorName}"
+                                             style="width: 100%;"
+                                             readonly="#{!createContractBean.editFieldsActive}">
+                                <f:selectItems
+                                    value="#{createContractBean.supervisorPersons}" 
+                                    var="supervisorPersonItem" itemValue="#{supervisorPersonItem}" 
+                                    itemLabel="#{supervisorPersonItem.firstName} #{supervisorPersonItem.lastName}"/> 
+                            </b:selectOneMenu>
+                            
+                        </b:column>
+                    </b:row>
+                    <b:row style="padding-bottom: 20px; padding-top: 20px;">
+                        <b:column medium-screen="6">
+                            <b:selectOneMenu value="#{createContractBean.selectedAssistantPerson}" 
+                                             label="#{msg.contractAssistantName}"
+                                             style="width: 100%;"
+                                             readonly="#{!createContractBean.editFieldsActive}">
+                                <f:selectItems
+                                    value="#{createContractBean.assistantPersons}" 
+                                    var="assistantPersonItem" itemValue="#{assistantPersonItem}" 
+                                    itemLabel="#{assistantPersonItem.firstName} #{assistantPersonItem.lastName}"/> 
+                            </b:selectOneMenu>
+                            
+                        </b:column>
+                        <b:column medium-screen="6">
+                            <b:selectOneMenu value="#{createContractBean.selectedSecretaryPerson}" 
+                                             label="#{msg.contractSecretaryName}"
+                                             style="width: 100%;"
+                                             readonly="#{!createContractBean.editFieldsActive}">
+                                <f:selectItems
+                                    value="#{createContractBean.secretaryPersons}" 
+                                    var="secretaryPersonItem" itemValue="#{secretaryPersonItem}" 
+                                    itemLabel="#{secretaryPersonItem.firstName} #{secretaryPersonItem.lastName}"/> 
+                            </b:selectOneMenu>
+                            
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column medium-screen="6">
+                        </b:column>
+                        <b:column medium-screen="6">
+                            <h:panelGrid columns="2">
+                                <b:commandButton look="info" value="${msg.contractFormClear}" action="#{createContractBean.clearContractForm}"/>
+                                <b:commandButton look="primary" action="#{createContractBean.SaveContract}" value="${msg.contractSaveButton}" disabled="#{!createContractBean.editFieldsActive}"/>
+                            </h:panelGrid>
+                        </b:column>
+                    </b:row>
+                </b:panel>
+            </b:container>   
+        </h:form>
+    </ui:define>
+</ui:composition>

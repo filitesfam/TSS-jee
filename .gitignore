@@ -1,0 +1,15 @@
+/PapaJavaEE18/nbproject/private/
+/PapaJavaEE18/PapaJavaEE18-war/nbproject/private/
+/PapaJavaEE18/PapaJavaEE18-ejb/nbproject/private/
+PapaJavaEE18/dist/PapaJavaEE18.ear
+PapaJavaEE18/build/PapaJavaEE18-war.war
+PapaJavaEE18/build/PapaJavaEE18-ejb.jar
+PapaJavaEE18/build/META-INF/MANIFEST.MF
+PapaJavaEE18/PapaJavaEE18-war/dist/
+PapaJavaEE18/PapaJavaEE18-ejb/build/
+PapaJavaEE18/PapaJavaEE18-war/build/
+PapaJavaEE18/PapaJavaEE18-ejb/dist/
+PapaJavaEE18/build/
+PapaJavaEE18/dist/
+PapaJavaEE18/.idea/
+PapaJavaEE18/PapaJavaEE18-war/nbproject/build-impl.xml~

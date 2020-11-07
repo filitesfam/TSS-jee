@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition template="/WEB-INF/templates/page-template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui">
+    <ui:param name="title" value="${msg.contractListTitle}"/>
+    <ui:define name="content">
+        <h:form id="contractListForm">
+            <b:dataTable var="contract" value="${contractListBean.contractList}">
+                <b:dataTableColumn label="${msg.generalId}">
+                    ${contract.id}
+                </b:dataTableColumn>     
+                <b:dataTableColumn label="${msg.contractNameHeader}">
+                    <h:link outcome="contractdetail" value="${contract.name}">
+                        <f:param name="uuid" value="${contract.uuid}"/>
+                    </h:link>
+                </b:dataTableColumn>
+                <b:dataTableColumn label="${msg.employeeName}">
+                    ${contract.employeeName}
+                </b:dataTableColumn>              
+                <b:dataTableColumn label="${msg.contractStartDate}">
+                    ${contract.startDate}
+                </b:dataTableColumn>
+                <b:dataTableColumn label="${msg.contractEndDate}">
+                    ${contract.endDate}
+                </b:dataTableColumn>
+                <b:dataTableColumn label="${msg.contractSupervisor}">
+                    ${contract.supervisorName}
+                </b:dataTableColumn>
+                <b:dataTableColumn label="${msg.contractStatus}">
+                    ${contract.status}
+                </b:dataTableColumn>
+            </b:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>

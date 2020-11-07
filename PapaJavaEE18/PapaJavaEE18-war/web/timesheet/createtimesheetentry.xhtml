@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition 
+    template="/WEB-INF/templates/page-template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:b="http://bootsfaces.net/ui">
+
+    <ui:param name="title" value="#{msg.timesheetEntryCreate}">
+    </ui:param>
+    <ui:define name="content">
+        <h:form id="createTimesheetEntryForm">
+            <b:container fluid="true" >
+                <b:panel title="#{msg.timesheetEntryCreate}" look="primary" id="creatEditTimesheetPanel">
+                    <h:messages for="createTimesheetEntryForm" showSummary="true" showDetail="true"/>  
+                    <b:row>
+                        <b:column medium-screen="6">
+                            <b:selectOneMenu value="#{createTimesheetEntryBean.contract}" 
+                                             label="#{msg.timesheetNameHeader}"
+                                             style="width: 100%;"
+                                             disabled="#{!createTimesheetEntryBean.isSaveButtonsActive}"
+                                             required="true">
+                                <f:selectItem itemLabel="#{msg.generalPleaseSelect}" itemValue=""/>
+                                <f:selectItems value="#{createTimesheetEntryBean.contractList}" 
+                                               var="contractItem" itemValue="#{contractItem}" itemLabel="#{contractItem.name}"/> 
+                                <f:ajax execute="@form" render="@form" listener="#{createTimesheetEntryBean.contractListenerEvent}" />
+                            </b:selectOneMenu>
+                        </b:column>
+                        <b:column medium-screen="6">
+                            <b:dateTimePicker id="entryDate" label="#{msg.timesheetEntryEntryDate}"
+                                              value="#{createTimesheetEntryBean.timesheetEntry.entryDate}"
+                                              mode="popup-icon"
+                                              show-icon="true"
+                                              show-time="false"
+                                              show-date="true"
+                                              use-current="true"
+                                              disabled="#{createTimesheetEntryBean.hoursDisabled}"/>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column medium-screen="6">
+                            <b:selectOneMenu disabled="#{createTimesheetEntryBean.timesheetDisabled}" 
+                                             value="#{createTimesheetEntryBean.timesheetEntry.timesheet}" 
+                                             label="#{msg.generalTimesheet}"
+                                             style="width: 100%;">
+                                <f:selectItem itemLabel="#{msg.generalPleaseSelect}" itemValue=""/>
+                                <f:selectItems value="#{createTimesheetEntryBean.timesheetList}" var="timesheetItem" itemValue="#{timesheetItem}" itemLabel="#{timesheetItem.formattedName}" /> 
+                                <f:ajax execute="@form" render="@form" listener="#{createTimesheetEntryBean.timesheetListenerEvent}" />
+                            </b:selectOneMenu>
+                            <b:selectOneMenu value="#{createTimesheetEntryBean.timesheetEntry.type}" 
+                                             label="#{msg.timesheetEntryReportType}"
+                                             style="width: 70%;"
+                                             disabled="#{createTimesheetEntryBean.reportTypeDisabled}">
+                                <f:selectItem itemLabel="#{msg.generalPleaseSelect}" itemValue=""/>
+                                <f:selectItems value="#{createTimesheetEntryBean.reportTypeList}" 
+                                               var="typeItem" itemValue="#{typeItem}" itemLabel="#{typeItem}"/> 
+                            </b:selectOneMenu>
+                        </b:column>
+                        <b:column medium-screen="3">
+                            <b:dateTimePicker id="startTime" label="#{msg.timesheetEntryStartTime}"
+                                              value="#{createTimesheetEntryBean.timesheetEntry.startTime}"
+                                              mode="inline"
+                                              show-icon="true"
+                                              show-time="true"
+                                              show-date="false"
+                                              use-current="true"
+                                              disabled="#{createTimesheetEntryBean.hoursDisabled}"/>
+                        </b:column>
+                        <b:column medium-screen="3">
+                            <b:dateTimePicker id="endTime" label="#{msg.timesheetEntryEndTime}"
+                                              value="#{createTimesheetEntryBean.timesheetEntry.endTime}"
+                                              mode="inline"
+                                              show-icon="true"
+                                              show-time="true"
+                                              show-date="false"
+                                              use-current="true"
+                                              disabled="#{createTimesheetEntryBean.hoursDisabled}"/>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column>
+                            <b:inputText id="timesheetEntryDescription"
+                                         style="height: 50px;"
+                                         autocomplete="off"
+                                         label="#{msg.timesheetEntryDescription}"
+                                         value="#{createTimesheetEntryBean.timesheetEntry.description}"
+                                         disabled="#{createTimesheetEntryBean.descriptionDisabled}"
+                                         >
+                            </b:inputText>
+                        </b:column>
+                    </b:row>
+                    <b:row>
+                        <b:column medium-screen="6">
+
+                            <h:panelGrid columns="2">
+                                <b:commandButton look="danger"  value="#{msg.timesheetEntryClearEntryForm}" 
+                                                 disabled="#{!createTimesheetEntryBean.isClearButtonsActive}" 
+                                                 action="#{createTimesheetEntryBean.clearEntryForm}"/>
+                                <b:commandButton look="primary" value="#{msg.generalSave}" 
+                                                 disabled="#{!createTimesheetEntryBean.isSaveButtonsActive}" 
+                                                 action="#{createTimesheetEntryBean.saveTimesheetEntry}"/>
+
+                            </h:panelGrid>
+                        </b:column>
+                        <b:column medium-screen="6">
+
+                        </b:column>
+                    </b:row>
+                </b:panel>
+                <b:panel id="entryPanel">
+                    <b:dataTable var="timesheetentry" value="${createTimesheetEntryBean.timesheetEntryList}"
+                                 >
+                        <b:dataTableColumn label="${msg.generalId}" value="${timesheetentry.id}" order="asc"/>
+                        <b:dataTableColumn label="${msg.generalTimesheet}" order="asc">
+                            ${timesheetentry.timesheet.startDate} - ${timesheetentry.timesheet.endDate} ( ${timesheetentry.timesheet.status} )
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="${msg.timesheetEntryType}">
+                            ${timesheetentry.type}
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="${msg.timesheetEntryEntryDate}">
+                            <h:outputText value="${timesheetentry.entryDate}" >
+                                <f:convertDateTime pattern="dd.MM.yyyy"/>
+                            </h:outputText>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="${msg.timesheetEntryStartTime}">
+                            <h:outputText value="${timesheetentry.startTime}" >
+                                <f:convertDateTime pattern="HH:mm" timeZone="GMT+2"/>
+                            </h:outputText>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="${msg.timesheetEntryEndTime}">
+                            <h:outputText value="${timesheetentry.endTime}" >
+                                <f:convertDateTime pattern="HH:mm" timeZone="GMT+2" />
+                            </h:outputText>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="${msg.timesheetEntryHours}">
+                            ${timesheetentry.hours}
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="${msg.timesheetEntryDescription}">
+                            ${timesheetentry.description}
+                        </b:dataTableColumn>
+                    </b:dataTable>
+                </b:panel>
+            </b:container>   
+        </h:form>
+    </ui:define>
+</ui:composition>

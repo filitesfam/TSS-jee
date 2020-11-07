@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition template="/WEB-INF/templates/page-template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui">
+    <f:metadata>
+        <f:viewParam id="uuidParam" name="uuid" value="#{timesheetEntryBean.uuid}">
+            <f:validateRegex pattern="[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}"/>
+        </f:viewParam>
+    </f:metadata>
+    <ui:param name="title" value="${msg.timesheetEntryTitle}"/>
+    <ui:define name="content">
+        <b:form id="timesheetEntryForm" horizontal="true">
+            <b:formGroup>
+                <b:panel id="entryPanel">
+                    <b:dataTable var="timesheetentry" value="${timesheetEntryBean.timesheet.entries}">
+                        <b:dataTableColumn label="${msg.generalId}" value="${timesheetentry.id}" order="asc"/>
+                        <b:dataTableColumn label="${msg.generalTimesheet}" order="asc">
+                            ${timesheetentry.timesheet.startDate} - ${timesheetentry.timesheet.endDate} ( ${timesheetentry.timesheet.status} )
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="${msg.timesheetEntryType}">
+                            ${timesheetentry.type}
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="${msg.timesheetEntryEntryDate}">
+                            <h:outputText value="${timesheetentry.entryDate}" >
+                                <f:convertDateTime pattern="dd.MM.yyyy"/>
+                            </h:outputText>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="${msg.timesheetEntryStartTime}">
+                            <h:outputText value="${timesheetentry.startTime}" >
+                                <f:convertDateTime pattern="HH:mm" timeZone="GMT+2"/>
+                            </h:outputText>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="${msg.timesheetEntryEndTime}">
+                            <h:outputText value="${timesheetentry.endTime}" >
+                                <f:convertDateTime pattern="HH:mm" timeZone="GMT+2" />
+                            </h:outputText>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="${msg.timesheetEntryHours}">
+                            ${timesheetentry.hours}
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="${msg.timesheetEntryDescription}">
+                            ${timesheetentry.description}
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="#{msg.generalOperation}">
+                            <h:link outcome="timesheetEntryDetail" value="#{msg.generalEdit}"
+                                    rendered="${timesheetEntryBean.timesheet.editAuthorized}">
+                                <f:param name="uuid" value="${timesheetentry.uuid}"/>
+                            </h:link>
+                        </b:dataTableColumn>
+                    </b:dataTable>
+
+                    <b:commandButton value="${msg.timesheetEntrySendToApprove}" look="success" style="width:220px"
+                                     rendered="${timesheetEntryBean.timesheet.canBeSendedToSupervisor}"
+                                     actionListener="#{timesheetEntryBean.sendTimesheetToSupervisor(timesheetEntryBean.timesheet)}"
+                                     immediate="true" update="@form"
+                                     icon="edit" ajax="true"
+                                     />
+                    <b:commandButton value="${msg.timesheetEntryClaim}" look="danger" style="width:220px"
+                                     rendered="${timesheetEntryBean.timesheet.canBeClaimed}"
+                                     actionListener="#{timesheetEntryBean.claimTimesheet(timesheetEntryBean.timesheet)}"
+                                     immediate="true" update="@form"
+                                     icon="edit" ajax="true"
+                                     />
+                    <b:commandButton value="#{msg.generalApprove}" look="success" style="width:220px"
+                                     rendered="${timesheetEntryBean.timesheet.canBeApproved}"
+                                     actionListener="#{timesheetEntryBean.aprroveTimesheet(timesheetEntryBean.timesheet)}"
+                                     immediate="true" update="@form"
+                                     icon="edit" ajax="true"
+                                     />
+                    <b:commandButton value="${msg.timesheetEntrySendToEmployee}" look="danger" style="width:220px"
+                                     rendered="${timesheetEntryBean.timesheet.canBeSendedToEmployee}"
+                                     actionListener="#{timesheetEntryBean.sendTimesheetToEmployee(timesheetEntryBean.timesheet)}"
+                                     immediate="true" update="@form"
+                                     icon="edit" ajax="true"
+                                     />
+                    <b:commandButton value="#{msg.timesheetEntryArchive}" look="danger" style="width:220px"
+                                     rendered="${timesheetEntryBean.timesheet.canBeArchived}"
+                                     actionListener="#{timesheetEntryBean.archiveTimesheet(timesheetEntryBean.timesheet)}"
+                                     immediate="true" update="@form"
+                                     icon="edit" ajax="true"
+                                     />
+
+                </b:panel>
+            </b:formGroup>
+            <b:formGroup>
+
+            </b:formGroup>
+        </b:form>
+    </ui:define>
+</ui:composition>

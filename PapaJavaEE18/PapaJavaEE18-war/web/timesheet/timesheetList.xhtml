@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<ui:composition template="/WEB-INF/templates/page-template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui">
+    <ui:param name="title" value="${msg.timesheetListTitle}"/>
+    <ui:define name="content">
+        <b:form id="timesheetEntryForm" horizontal="true">
+            <b:formGroup>
+                <b:panel id="listPanel">
+                    <b:dataTable id="timesheetDataList" var="timesheet" value="${timesheetListBean.timesheetList}">
+                        <b:dataTableColumn label="${msg.generalId}" order="asc">
+                            <h:link outcome="timesheetEntry" value="${timesheet.id}">
+                                <f:param name="uuid" value="${timesheet.uuid}"/>
+                            </h:link>
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="${msg.generalContractName}">
+                            ${timesheet.contract.name}
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="${msg.generalStatus}">
+                            ${timesheet.status}
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="${msg.generalStartDate}">
+                            ${timesheet.startDate}
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="${msg.generalEndDate}">
+                            ${timesheet.endDate}
+                        </b:dataTableColumn>
+                        <b:dataTableColumn label="${msg.generalOperation}">
+                            <b:commandButton value="${msg.timesheetEntrySendToApprove}" look="success"
+                                             rendered="${timesheet.canBeSendedToSupervisor}"
+                                             actionListener="#{timesheetListBean.sendTimesheetToSupervisor(timesheet)}"
+                                             immediate="true" update="@form:listPanel"
+                                             icon="edit" ajax="true" />
+                            <b:commandButton value="${msg.timesheetEntryClaim}" look="danger"
+                                             rendered="${timesheet.canBeClaimed}"
+                                             actionListener="#{timesheetListBean.claimTimesheet(timesheet)}"
+                                             immediate="true" update="@form:listPanel"
+                                             icon="edit" ajax="true" />
+                            <b:commandButton value="#{msg.generalApprove}" look="success"
+                                             rendered="${timesheet.canBeApproved}"
+                                             actionListener="#{timesheetListBean.aprroveTimesheet(timesheet)}"
+                                             immediate="true" update="@form"
+                                             icon="edit" ajax="true" />
+                            <b:commandButton value="#{msg.timesheetEntrySendToEmployee}" look="danger"
+                                             rendered="${timesheet.canBeSendedToEmployee}"
+                                             actionListener="#{timesheetListBean.sendTimesheetToEmployee(timesheet)}"
+                                             immediate="true" update="@form:listPanel"
+                                             icon="edit" ajax="true" />
+                            <b:commandButton value="#{msg.timesheetEntryArchive}" look="danger"
+                                             rendered="${timesheet.canBeArchived}"
+                                             actionListener="#{timesheetListBean.archiveTimesheet(timesheet)}"
+                                             immediate="true" update="@form:listPanel"
+                                             icon="edit" ajax="true" />
+                        </b:dataTableColumn>
+                    </b:dataTable>
+                </b:panel>
+            </b:formGroup>
+        </b:form>
+    </ui:define>
+</ui:composition>

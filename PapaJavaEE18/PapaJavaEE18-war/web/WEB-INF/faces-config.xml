@@ -1,0 +1,411 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    <application>
+        <locale-config>
+            <default-locale>en</default-locale>
+            <supported-locale>de</supported-locale>
+            <supported-locale>en</supported-locale>
+        </locale-config>
+        <resource-bundle>
+            <base-name>com.papa.jee18.i18n.Messages</base-name>
+            <var>msg</var>
+        </resource-bundle>
+    </application>
+    <navigation-rule>
+        <from-view-id>/auth/login.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>homepage</from-outcome>
+            <to-view-id>/main/home.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>aboutus</from-outcome>
+            <to-view-id>/main/about-us.xhtml</to-view-id>
+            <redirect />
+        </navigation-case> 
+        <navigation-case>
+            <from-outcome>contactus</from-outcome>
+            <to-view-id>/main/contact-us.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>         
+    </navigation-rule> 
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>logout</from-outcome>
+            <to-view-id>/main/home.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule> 
+    <navigation-rule>
+        <from-view-id>/main/about-us.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>logout</from-outcome>
+            <to-view-id>/main/home.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>aboutus</from-outcome>
+            <to-view-id>/main/about-us.xhtml</to-view-id>
+            <redirect />
+        </navigation-case> 
+        <navigation-case>
+            <from-outcome>contactus</from-outcome>
+            <to-view-id>/main/contact-us.xhtml</to-view-id>
+            <redirect />
+        </navigation-case> 
+        <navigation-case>
+            <from-outcome>contractlist</from-outcome>
+            <to-view-id>/contract/contractlist.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>contractdetail</from-outcome>
+            <to-view-id>/contract/contractdetail.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>createcontract</from-outcome>
+            <to-view-id>/contract/admin/createcontract.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>testdata</from-outcome>
+            <to-view-id>/test/testdata.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>timesheetList</from-outcome>
+            <to-view-id>/timesheet/timesheetList.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>timesheetEntry</from-outcome>
+            <to-view-id>/timesheet/timesheetEntry.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>createTimesheetEntry</from-outcome>
+            <to-view-id>/timesheet/createtimesheetentry.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>timesheetEntryDetail</from-outcome>
+            <to-view-id>/timesheet/timesheetentrydetail.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>homepage</from-outcome>
+            <to-view-id>/main/home.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/main/contact-us.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>logout</from-outcome>
+            <to-view-id>/main/home.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>aboutus</from-outcome>
+            <to-view-id>/main/about-us.xhtml</to-view-id>
+            <redirect />
+        </navigation-case> 
+        <navigation-case>
+            <from-outcome>contactus</from-outcome>
+            <to-view-id>/main/contact-us.xhtml</to-view-id>
+            <redirect />
+        </navigation-case> 
+        <navigation-case>
+            <from-outcome>contractlist</from-outcome>
+            <to-view-id>/contract/contractlist.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>contractdetail</from-outcome>
+            <to-view-id>/contract/contractdetail.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>createcontract</from-outcome>
+            <to-view-id>/contract/admin/createcontract.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>testdata</from-outcome>
+            <to-view-id>/test/testdata.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>timesheetList</from-outcome>
+            <to-view-id>/timesheet/timesheetList.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>timesheetEntry</from-outcome>
+            <to-view-id>/timesheet/timesheetEntry.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>createTimesheetEntry</from-outcome>
+            <to-view-id>/timesheet/createtimesheetentry.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>timesheetEntryDetail</from-outcome>
+            <to-view-id>/timesheet/timesheetentrydetail.xhtml</to-view-id>
+            <redirect />
+        </navigation-case> 
+        <navigation-case>
+            <from-outcome>homepage</from-outcome>
+            <to-view-id>/main/home.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>                     
+    <navigation-rule>
+        <from-view-id>/main/home.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>login</from-outcome>
+            <to-view-id>/auth/login.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>        
+        <navigation-case>
+            <from-outcome>homepage</from-outcome>
+            <to-view-id>/main/home.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>aboutus</from-outcome>
+            <to-view-id>/main/about-us.xhtml</to-view-id>
+            <redirect />
+        </navigation-case> 
+        <navigation-case>
+            <from-outcome>contactus</from-outcome>
+            <to-view-id>/main/contact-us.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>               
+        <navigation-case>
+            <from-outcome>contractlist</from-outcome>
+            <to-view-id>/contract/contractlist.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>contractdetail</from-outcome>
+            <to-view-id>/contract/contractdetail.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>createcontract</from-outcome>
+            <to-view-id>/contract/admin/createcontract.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>testdata</from-outcome>
+            <to-view-id>/test/testdata.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>timesheetList</from-outcome>
+            <to-view-id>/timesheet/timesheetList.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>timesheetEntry</from-outcome>
+            <to-view-id>/timesheet/timesheetEntry.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>createTimesheetEntry</from-outcome>
+            <to-view-id>/timesheet/createtimesheetentry.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>timesheetEntryDetail</from-outcome>
+            <to-view-id>/timesheet/timesheetentrydetail.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/timesheet/*</from-view-id>
+        <navigation-case>
+            <from-outcome>homepage</from-outcome>
+            <to-view-id>/main/home.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>aboutus</from-outcome>
+            <to-view-id>/main/about-us.xhtml</to-view-id>
+            <redirect />
+        </navigation-case> 
+        <navigation-case>
+            <from-outcome>contactus</from-outcome>
+            <to-view-id>/main/contact-us.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>               
+        <navigation-case>
+            <from-outcome>contractlist</from-outcome>
+            <to-view-id>/contract/contractlist.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>contractdetail</from-outcome>
+            <to-view-id>/contract/contractdetail.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>createcontract</from-outcome>
+            <to-view-id>/contract/admin/createcontract.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>testdata</from-outcome>
+            <to-view-id>/test/testdata.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>timesheetList</from-outcome>
+            <to-view-id>/timesheet/timesheetList.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>timesheetEntry</from-outcome>
+            <to-view-id>/timesheet/timesheetEntry.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>createTimesheetEntry</from-outcome>
+            <to-view-id>/timesheet/createtimesheetentry.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>timesheetEntryDetail</from-outcome>
+            <to-view-id>/timesheet/timesheetentrydetail.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>    
+    <navigation-rule>
+        <from-view-id>/contract/*</from-view-id>
+        <navigation-case>
+            <from-outcome>homepage</from-outcome>
+            <to-view-id>/main/home.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>aboutus</from-outcome>
+            <to-view-id>/main/about-us.xhtml</to-view-id>
+            <redirect />
+        </navigation-case> 
+        <navigation-case>
+            <from-outcome>contactus</from-outcome>
+            <to-view-id>/main/contact-us.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>               
+        <navigation-case>
+            <from-outcome>contractlist</from-outcome>
+            <to-view-id>/contract/contractlist.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>contractdetail</from-outcome>
+            <to-view-id>/contract/contractdetail.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>createcontract</from-outcome>
+            <to-view-id>/contract/admin/createcontract.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>testdata</from-outcome>
+            <to-view-id>/test/testdata.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>timesheetList</from-outcome>
+            <to-view-id>/timesheet/timesheetList.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>timesheetEntry</from-outcome>
+            <to-view-id>/timesheet/timesheetEntry.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>createTimesheetEntry</from-outcome>
+            <to-view-id>/timesheet/createtimesheetentry.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>timesheetEntryDetail</from-outcome>
+            <to-view-id>/timesheet/timesheetentrydetail.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/test/*</from-view-id>
+        <navigation-case>
+            <from-outcome>homepage</from-outcome>
+            <to-view-id>/main/home.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>aboutus</from-outcome>
+            <to-view-id>/main/about-us.xhtml</to-view-id>
+            <redirect />
+        </navigation-case> 
+        <navigation-case>
+            <from-outcome>contactus</from-outcome>
+            <to-view-id>/main/contact-us.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>               
+        <navigation-case>
+            <from-outcome>contractlist</from-outcome>
+            <to-view-id>/contract/contractlist.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>contractdetail</from-outcome>
+            <to-view-id>/contract/contractdetail.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>createcontract</from-outcome>
+            <to-view-id>/contract/admin/createcontract.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>testdata</from-outcome>
+            <to-view-id>/test/testdata.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>timesheetList</from-outcome>
+            <to-view-id>/timesheet/timesheetList.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>timesheetEntry</from-outcome>
+            <to-view-id>/timesheet/timesheetEntry.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>createTimesheetEntry</from-outcome>
+            <to-view-id>/timesheet/createtimesheetentry.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>timesheetEntryDetail</from-outcome>
+            <to-view-id>/timesheet/timesheetentrydetail.xhtml</to-view-id>
+            <redirect />
+        </navigation-case>
+    </navigation-rule>     
+    <managed-bean>
+        <managed-bean-name>loginBean</managed-bean-name>
+        <managed-bean-class>com.papa.jee18.web.auth.LoginBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+</faces-config>
